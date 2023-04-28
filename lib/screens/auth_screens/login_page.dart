@@ -179,7 +179,10 @@ class _LoginPageState extends State<LoginPage> {
                             const VerticalSizeBox(height: 35),
                             CommonButton(
                               buttonTitle: 'Sign In',
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, RouteGenerator.homePage);
+                              },
                             ),
                             const VerticalSizeBox(height: 25),
                             Row(

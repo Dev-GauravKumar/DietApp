@@ -1,6 +1,10 @@
+import 'dart:math';
 import 'package:diet_app/constants/color_consts.dart';
+import 'package:diet_app/constants/image_consts.dart';
 import 'package:diet_app/constants/text_style_consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class VerticalSizeBox extends StatelessWidget {
   const VerticalSizeBox({super.key, required this.height});
@@ -76,5 +80,108 @@ class CompulsoryHeader extends StatelessWidget {
             AppTextStyles.s12w500cloginFieldHeader.copyWith(color: Colors.red),
       ),
     ]));
+  }
+}
+
+AppBar CommonAppBar(BuildContext context) {
+  return AppBar(
+    backgroundColor: AppColors.appBarBackgroundColor,
+    leading: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+            color: AppColors.profileBackgroundColor,
+            child: Image.asset(
+              AppImages.appBarProfileImage,
+              fit: BoxFit.contain,
+            )),
+      ),
+    ),
+    leadingWidth: 60,
+    toolbarHeight: 60,
+    centerTitle: true,
+    title: Column(
+      children: [
+        const Text(
+          'Hello, Masfara!',
+          style: AppTextStyles.s17w700cblack,
+        ),
+        Text(
+          'Today Wed, Dec 28',
+          style: AppTextStyles.s16w600cloginBg
+              .copyWith(fontSize: 10, fontWeight: FontWeight.w500),
+        ),
+      ],
+    ),
+    actions: [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            SizedBox(
+              height: 40,
+              width: 40,
+              child: Card(
+                elevation: 5.0,
+                color: AppColors.loginFieldValueColor,
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  child: SvgPicture.asset(
+                    AppImages.appBarBellIcon,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 2.sp,
+              top: 5.sp,
+              child: const Icon(
+                Icons.circle,
+                color: Colors.red,
+                size: 6,
+              ),
+            )
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+class HomeScreenCard extends StatelessWidget {
+  const HomeScreenCard(
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.color,
+      required this.textColor});
+  final String icon;
+  final String title;
+  final Color color;
+  final Color textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: color,
+      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.0.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(icon),
+            VerticalSizeBox(height: 25.sp),
+            Text(title,
+                style: AppTextStyles.s12w500cloginFieldHeader
+                    .copyWith(color: textColor)),
+          ],
+        ),
+      ),
+    );
   }
 }

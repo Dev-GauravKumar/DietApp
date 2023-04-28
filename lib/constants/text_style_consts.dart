@@ -27,4 +27,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.loginPageBgColor,
   );
+  static const s17w700cblack = TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
+    color: AppColors.blackColor,
+  );
 }
