@@ -70,6 +70,8 @@ flutter:
     - assets/images/auth_images/
     - assets/images/home_page_images/
     - assets/images/home_screen_card_images/
+    - assets/images/tracker_screen_images/
+    - assets/images/settings_screen_images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

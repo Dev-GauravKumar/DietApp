@@ -13,4 +13,9 @@ class AppColors {
   static const Color trackerIconColor = Color(0xffFF647E);
   static const Color lightGreyColor = Color(0xffE2E2E2);
   static const Color darkGreyColor = Color(0xff8A8A8A);
+  static const Color searchBoxBgColor = Color(0xffE6F1F8);
+  static const Color chatTimeColor = Color(0xffA4A4A4);
+  static const Color chatMessageColor = Color(0xffA4A4A4);
+  static const Color chatPersonNameColor = Color(0xff4D5256);
+  static const Color newAppointmentColor = Color(0xff70D2B0);
 }

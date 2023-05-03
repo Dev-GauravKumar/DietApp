@@ -1,13 +1,20 @@
 import 'package:diet_app/constants/color_consts.dart';
 import 'package:diet_app/constants/image_consts.dart';
+import 'package:diet_app/constants/text_style_consts.dart';
+import 'package:diet_app/screens/chat_screens/chat_screen.dart';
 import 'package:diet_app/screens/home_screen.dart';
-import 'package:diet_app/widgets/common_widgets.dart';
+import 'package:diet_app/screens/notification_screen.dart';
+import 'package:diet_app/screens/schedule_screens/schedule_screen.dart';
+import 'package:diet_app/screens/settings_screens/settings_screen.dart';
+import 'package:diet_app/screens/tracker_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -15,41 +22,50 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
+  bool isNotificationSelected = false;
+  bool showAppbar = true;
   final pages = [
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    ChatScreen(),
+    TrackerScreen(),
+    ScheduleScreen(),
+    SettingsScreen(),
+    NotificationScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
         extendBody: true,
-        appBar: CommonAppBar(context),
+        appBar: showAppbar ? commonAppBar(context) : null,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
-          padding: EdgeInsets.all(5.0.sp),
-          decoration: BoxDecoration(
-              color: AppColors.loginFieldValueColor,
-              borderRadius: BorderRadius.circular(40)),
-          child: FloatingActionButton(
-            backgroundColor: selectedIndex == 2
-                ? AppColors.trackerIconColor
-                : AppColors.loginPageBgColor,
-            onPressed: () {
-              setState(() {
-                selectedIndex = 2;
-              });
-            },
-            child: SvgPicture.asset(
-              AppImages.trackerIcon,
-              color: selectedIndex == 2
-                  ? AppColors.loginPageBgColor
-                  : AppColors.trackerIconColor,
-            ),
-          ),
-        ),
+        floatingActionButton: showFab
+            ? Container(
+                padding: EdgeInsets.all(5.0.sp),
+                decoration: BoxDecoration(
+                    color: AppColors.loginFieldValueColor,
+                    borderRadius: BorderRadius.circular(40)),
+                child: FloatingActionButton(
+                  backgroundColor: selectedIndex == 2
+                      ? AppColors.trackerIconColor
+                      : AppColors.loginPageBgColor,
+                  onPressed: () {
+                    setState(() {
+                      isNotificationSelected = false;
+                      selectedIndex = 2;
+                      showAppbar = true;
+                    });
+                  },
+                  child: SvgPicture.asset(
+                    AppImages.trackerIcon,
+                    color: selectedIndex == 2
+                        ? AppColors.loginPageBgColor
+                        : AppColors.trackerIconColor,
+                  ),
+                ),
+              )
+            : const SizedBox(),
         body: pages[selectedIndex],
         bottomNavigationBar: customBottomBar());
   }
@@ -121,6 +137,12 @@ class _HomePageState extends State<HomePage> {
       child: GestureDetector(
         onTap: (() {
           setState(() {
+            if (index == 0) {
+              showAppbar = true;
+            } else {
+              showAppbar = false;
+            }
+            isNotificationSelected = false;
             selectedIndex = index;
           });
         }),
@@ -142,6 +164,87 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+    );
+  }
+
+  AppBar commonAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: AppColors.appBarBackgroundColor,
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+              color: AppColors.profileBackgroundColor,
+              child: Image.asset(
+                AppImages.appBarProfileImage,
+                fit: BoxFit.contain,
+              )),
+        ),
+      ),
+      leadingWidth: 60,
+      toolbarHeight: 60,
+      centerTitle: true,
+      title: Column(
+        children: [
+          const Text(
+            'Hello, Masfara!',
+            style: AppTextStyles.s17w700cblack,
+          ),
+          Text(
+            'Today Wed, Dec 28',
+            style: AppTextStyles.s16w600cloginBg
+                .copyWith(fontSize: 10, fontWeight: FontWeight.w500),
+          ),
+        ],
+      ),
+      actions: [
+        GestureDetector(
+          onTap: (() {
+            setState(() {
+              selectedIndex = 5;
+              isNotificationSelected = true;
+            });
+          }),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: Card(
+                    elevation: 5.0,
+                    color: isNotificationSelected
+                        ? AppColors.loginPageBgColor
+                        : AppColors.loginFieldValueColor,
+                    child: Container(
+                      padding: const EdgeInsets.all(5),
+                      child: SvgPicture.asset(
+                        isNotificationSelected
+                            ? AppImages.selectedNotificationIcon
+                            : AppImages.appBarBellIcon,
+                      ),
+                    ),
+                  ),
+                ),
+                isNotificationSelected
+                    ? const SizedBox()
+                    : Positioned(
+                        right: 2.sp,
+                        top: 5.sp,
+                        child: const Icon(
+                          Icons.circle,
+                          color: Colors.red,
+                          size: 6,
+                        ),
+                      )
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

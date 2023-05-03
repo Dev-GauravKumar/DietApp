@@ -45,4 +45,22 @@ class AppImages {
       'assets/images/home_screen_card_images/lifeStyleImage.svg';
   static const String nutritionImage =
       'assets/images/home_screen_card_images/nutritionImage.svg';
+  static const String selectedNotificationIcon =
+      'assets/images/home_screen_card_images/selectedNotification.svg';
+  static const String weightTrackerImage =
+      'assets/images/tracker_screen_images/weightTrackerImage.svg';
+  static const String mealPlanImage =
+      'assets/images/tracker_screen_images/mealPlanImage.svg';
+  static const String bloodComponentImage =
+      'assets/images/tracker_screen_images/bloodComponentImage.svg';
+  static const String myAccountImage =
+      'assets/images/settings_screen_images/myAccount.svg';
+  static const String serviceImage =
+      'assets/images/settings_screen_images/service.svg';
+  static const String receiptImage =
+      'assets/images/settings_screen_images/receipt.svg';
+  static const String dietitianImage =
+      'assets/images/settings_screen_images/dietitian.svg';
+  static const String logoutImage =
+      'assets/images/settings_screen_images/logout.svg';
 }
