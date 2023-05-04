@@ -2,6 +2,10 @@ import 'package:diet_app/screens/auth_screens/forgot_password_page.dart';
 import 'package:diet_app/screens/auth_screens/login_page.dart';
 import 'package:diet_app/screens/auth_screens/signup_page.dart';
 import 'package:diet_app/screens/home_page.dart';
+import 'package:diet_app/screens/settings_screens/dietitian.dart';
+import 'package:diet_app/screens/settings_screens/my_account_screen.dart';
+import 'package:diet_app/screens/settings_screens/receipts_screen.dart';
+import 'package:diet_app/screens/settings_screens/service_programme_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/chat_screens/chat_box_screen.dart';
@@ -12,6 +16,10 @@ abstract class RouteGenerator {
   static const String forgotPasswordPage = '/forgotPassword';
   static const String homePage = '/homePage';
   static const String chatBoxScreen = '/chatBoxScreen';
+  static const String myAccountScreen = '/myAccountScreen';
+  static const String serviceProgrammeScreen = '/serviceProgrammeScreen';
+  static const String receiptsScreen = '/receiptsScreen';
+  static const String dietitianBioScreen = '/dietitianBioScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     Object? args = settings.arguments;
@@ -24,11 +32,20 @@ abstract class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordPage());
       case homePage:
         return MaterialPageRoute(builder: (_) => const HomePage());
+      case serviceProgrammeScreen:
+        return MaterialPageRoute(
+            builder: (_) => const ServiceProgrammeScreen());
+      case receiptsScreen:
+        return MaterialPageRoute(builder: (_) => const ReceiptsScreen());
+      case dietitianBioScreen:
+        return MaterialPageRoute(builder: (_) => const DietitianBio());
       case chatBoxScreen:
         return MaterialPageRoute(
             builder: (_) => ChatBoxScreen(
                   name: args.toString(),
                 ));
+      case myAccountScreen:
+        return MaterialPageRoute(builder: (_) => const MyAccountScreen());
       default:
         throw const RouteException("Route not found");
     }

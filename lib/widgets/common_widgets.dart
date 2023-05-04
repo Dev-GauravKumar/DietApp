@@ -46,8 +46,8 @@ class CommonButton extends StatelessWidget {
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
     return SizedBox(
-      height: 55,
-      width: width ?? 316,
+      height: 55.sp,
+      width: width ?? 316.sp,
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
@@ -642,6 +642,214 @@ class ProfileCard extends StatelessWidget {
             'Registered on : $registrationDate',
             style: AppTextStyles.s11w400grey,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ServiceProgrammeTopCard extends StatelessWidget {
+  const ServiceProgrammeTopCard({
+    super.key,
+    required this.date,
+    required this.cutOffDate,
+  });
+  final String date;
+  final String cutOffDate;
+  @override
+  Widget build(BuildContext context) {
+    final _size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: _size.width,
+      child: Card(
+        elevation: 5.0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        color: AppColors.loginPageBgColor,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 15.sp),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                date,
+                style: AppTextStyles.s24w700white,
+              ),
+              VerticalSizeBox(height: 20.sp),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Cutt-off date ',
+                      style: AppTextStyles.s14w500cloginFieldValue
+                          .copyWith(color: AppColors.darkGreyColor),
+                    ),
+                    TextSpan(
+                      text: cutOffDate,
+                      style: AppTextStyles.s14w700black
+                          .copyWith(color: AppColors.loginFieldValueColor),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ServiceProgrammeDetailCard extends StatelessWidget {
+  const ServiceProgrammeDetailCard(
+      {super.key,
+      required this.name,
+      required this.description,
+      required this.price,
+      required this.isActive});
+  final String name;
+  final String description;
+  final String price;
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: isActive ? 5.0 : 0.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      color: isActive ? AppColors.trackerIconColor : AppColors.searchBoxBgColor,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 10.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              name,
+              style: AppTextStyles.s16w500black.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: isActive
+                      ? AppColors.loginFieldValueColor
+                      : AppColors.blackColor),
+            ),
+            VerticalSizeBox(height: 10.sp),
+            Text(
+              description,
+              style: AppTextStyles.s14w400cloginText.copyWith(
+                  color: isActive
+                      ? AppColors.loginFieldValueColor
+                      : AppColors.darkGreyColor),
+            ),
+            VerticalSizeBox(height: 10.sp),
+            Align(
+              alignment: Alignment.centerRight,
+              child: RichText(
+                text: TextSpan(
+                  style: AppTextStyles.s20w700black.copyWith(
+                      color: isActive
+                          ? AppColors.loginFieldValueColor
+                          : AppColors.blackColor),
+                  children: [
+                    TextSpan(
+                      text: price,
+                    ),
+                    WidgetSpan(
+                      child: Transform.translate(
+                        offset: const Offset(0.0, -7.0),
+                        child: Text(
+                          '.00',
+                          style: AppTextStyles.s20w700black.copyWith(
+                              fontSize: 11,
+                              color: isActive
+                                  ? AppColors.loginFieldValueColor
+                                  : AppColors.blackColor),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ReceiptCard extends StatelessWidget {
+  const ReceiptCard(
+      {super.key,
+      required this.name,
+      required this.description,
+      required this.price,
+      required this.receiptNumber,
+      required this.date});
+  final String name;
+  final String description;
+  final String price;
+  final String receiptNumber;
+  final String date;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      color: AppColors.searchBoxBgColor,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 10.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  name,
+                  style: AppTextStyles.s16w500black
+                      .copyWith(fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  'Receipt Num : $receiptNumber',
+                  style: AppTextStyles.s12w400black,
+                ),
+              ],
+            ),
+            VerticalSizeBox(height: 10.sp),
+            Text(
+              description,
+              style: AppTextStyles.s14w400cloginText
+                  .copyWith(color: AppColors.darkGreyColor),
+            ),
+            VerticalSizeBox(height: 10.sp),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(date),
+                RichText(
+                  text: TextSpan(
+                    style: AppTextStyles.s20w700black,
+                    children: [
+                      TextSpan(
+                        text: price,
+                      ),
+                      WidgetSpan(
+                        child: Transform.translate(
+                          offset: const Offset(0.0, -7.0),
+                          child: Text(
+                            '.00',
+                            style: AppTextStyles.s20w700black.copyWith(
+                                fontSize: 11, color: AppColors.blackColor),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

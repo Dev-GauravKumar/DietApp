@@ -63,4 +63,6 @@ class AppImages {
       'assets/images/settings_screen_images/dietitian.svg';
   static const String logoutImage =
       'assets/images/settings_screen_images/logout.svg';
+  static const String editLine =
+      'assets/images/settings_screen_images/edit-line.svg';
 }

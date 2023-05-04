@@ -12,22 +12,20 @@ class HistoryView extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: _size.height * 0.025),
-      child: Expanded(
-        child: ListView.separated(
-          physics: const BouncingScrollPhysics(),
-          itemCount: 2,
-          itemBuilder: ((context, index) {
-            return const DetailScheduleCard(
-                date: '31 Dec, 22',
-                time: '10 : 00 am',
-                name: 'Dr. John Doe',
-                serviceName: 'Service Program 2',
-                showReschedule: false);
-          }),
-          separatorBuilder: (BuildContext context, int index) {
-            return VerticalSizeBox(height: 10.sp);
-          },
-        ),
+      child: ListView.separated(
+        physics: const BouncingScrollPhysics(),
+        itemCount: 2,
+        itemBuilder: ((context, index) {
+          return const DetailScheduleCard(
+              date: '31 Dec, 22',
+              time: '10 : 00 am',
+              name: 'Dr. John Doe',
+              serviceName: 'Service Program 2',
+              showReschedule: false);
+        }),
+        separatorBuilder: (BuildContext context, int index) {
+          return VerticalSizeBox(height: 10.sp);
+        },
       ),
     );
   }

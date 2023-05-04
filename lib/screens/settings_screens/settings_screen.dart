@@ -1,6 +1,7 @@
 import 'package:diet_app/constants/color_consts.dart';
 import 'package:diet_app/constants/image_consts.dart';
 import 'package:diet_app/constants/text_style_consts.dart';
+import 'package:diet_app/route/routes.dart';
 import 'package:diet_app/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,6 +38,10 @@ class SettingsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteGenerator.myAccountScreen);
+                      },
                       leading: CircleAvatar(
                         backgroundColor: AppColors.loginPageBgColor,
                         child: SvgPicture.asset(AppImages.myAccountImage),
@@ -70,6 +75,10 @@ class SettingsScreen extends StatelessWidget {
                       ),
                     ),
                     ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteGenerator.serviceProgrammeScreen);
+                      },
                       leading: CircleAvatar(
                         backgroundColor: AppColors.loginPageBgColor,
                         child: SvgPicture.asset(AppImages.serviceImage),
@@ -90,6 +99,10 @@ class SettingsScreen extends StatelessWidget {
                       ),
                     ),
                     ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteGenerator.receiptsScreen);
+                      },
                       leading: CircleAvatar(
                         backgroundColor: AppColors.loginPageBgColor,
                         child: SvgPicture.asset(AppImages.receiptImage),
@@ -110,6 +123,10 @@ class SettingsScreen extends StatelessWidget {
                       ),
                     ),
                     ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteGenerator.dietitianBioScreen);
+                      },
                       leading: CircleAvatar(
                         backgroundColor: AppColors.loginPageBgColor,
                         child: SvgPicture.asset(AppImages.dietitianImage),
@@ -130,6 +147,9 @@ class SettingsScreen extends StatelessWidget {
                       ),
                     ),
                     ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, RouteGenerator.loginPage);
+                      },
                       leading: CircleAvatar(
                         backgroundColor: AppColors.loginPageBgColor,
                         child: SvgPicture.asset(AppImages.logoutImage),
