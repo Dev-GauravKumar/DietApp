@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:diet_app/constants/color_consts.dart';
 import 'package:diet_app/constants/image_consts.dart';
+import 'package:diet_app/route/routes.dart';
 import 'package:diet_app/widgets/common_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -135,11 +136,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisSpacing: 10,
                   childAspectRatio: 2 / 3),
               itemBuilder: (context, index) {
-                return HomeScreenCard(
-                  color: cardColors[index],
-                  icon: cardImages[index],
-                  textColor: textColor[index],
-                  title: cardTitles[index],
+                return GestureDetector(
+                  onTap: () {
+                    switch (index) {
+                      case 0:
+                        Navigator.pushNamed(
+                            context, RouteGenerator.myDietProgramScreen);
+                        break;
+                      default:
+                        Navigator.pushNamed(context, RouteGenerator.homePage);
+                    }
+                  },
+                  child: HomeScreenCard(
+                    color: cardColors[index],
+                    icon: cardImages[index],
+                    textColor: textColor[index],
+                    title: cardTitles[index],
+                  ),
                 );
               },
             ),

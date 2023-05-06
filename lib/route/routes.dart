@@ -2,6 +2,9 @@ import 'package:diet_app/screens/auth_screens/forgot_password_page.dart';
 import 'package:diet_app/screens/auth_screens/login_page.dart';
 import 'package:diet_app/screens/auth_screens/signup_page.dart';
 import 'package:diet_app/screens/home_page.dart';
+import 'package:diet_app/screens/home_page_card_screens/my_diet_program_screen1.dart';
+import 'package:diet_app/screens/home_page_card_screens/my_diet_program_screen2.dart';
+import 'package:diet_app/screens/schedule_screens/appointment_booking_screen.dart';
 import 'package:diet_app/screens/settings_screens/dietitian.dart';
 import 'package:diet_app/screens/settings_screens/my_account_screen.dart';
 import 'package:diet_app/screens/settings_screens/receipts_screen.dart';
@@ -20,7 +23,8 @@ abstract class RouteGenerator {
   static const String serviceProgrammeScreen = '/serviceProgrammeScreen';
   static const String receiptsScreen = '/receiptsScreen';
   static const String dietitianBioScreen = '/dietitianBioScreen';
-
+  static const String appointmentBookingScreen = '/appointmentBookingScreen';
+  static const String myDietProgramScreen = '/myDietProgramScreen';
   static Route<dynamic> generateRoute(RouteSettings settings) {
     Object? args = settings.arguments;
     switch (settings.name) {
@@ -39,6 +43,9 @@ abstract class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ReceiptsScreen());
       case dietitianBioScreen:
         return MaterialPageRoute(builder: (_) => const DietitianBio());
+      case appointmentBookingScreen:
+        return MaterialPageRoute(
+            builder: (_) => const AppointmentBookingScreen());
       case chatBoxScreen:
         return MaterialPageRoute(
             builder: (_) => ChatBoxScreen(
@@ -46,6 +53,8 @@ abstract class RouteGenerator {
                 ));
       case myAccountScreen:
         return MaterialPageRoute(builder: (_) => const MyAccountScreen());
+      case myDietProgramScreen:
+        return MaterialPageRoute(builder: (_) => const DietProgramScreen2());
       default:
         throw const RouteException("Route not found");
     }

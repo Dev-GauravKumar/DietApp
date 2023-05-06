@@ -2,7 +2,9 @@ import 'dart:math';
 import 'package:diet_app/constants/color_consts.dart';
 import 'package:diet_app/constants/image_consts.dart';
 import 'package:diet_app/constants/text_style_consts.dart';
+import 'package:diet_app/constants/widgets_consts.dart';
 import 'package:diet_app/route/routes.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -552,7 +554,10 @@ class DetailScheduleCard extends StatelessWidget {
                           width: 150.sp,
                           buttonTitle: 'Reschedule',
                           buttonColor: AppColors.loginPageBgColor,
-                          onTap: () {})
+                          onTap: () {
+                            Navigator.pushNamed(context,
+                                RouteGenerator.appointmentBookingScreen);
+                          })
                       : const SizedBox(),
                 ],
               )
@@ -848,6 +853,583 @@ class ReceiptCard extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RedProgressCard extends StatelessWidget {
+  const RedProgressCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.darkRedColor,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      height: 80.sp,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 20.sp),
+        child: Row(
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                CircularProgressIndicator(
+                  value: 0,
+                  backgroundColor:
+                      AppColors.loginFieldValueColor.withOpacity(0.7),
+                ),
+                Text(
+                  '0%',
+                  style: AppTextStyles.s12w700black
+                      .copyWith(color: AppColors.loginFieldValueColor),
+                ),
+              ],
+            ),
+            HorizontalSizedBox(width: 15.sp),
+            Expanded(
+              child: Text(
+                'Oops! It looks like you have not registered for a service programme!',
+                style: AppTextStyles.s12w700black
+                    .copyWith(color: AppColors.loginFieldValueColor),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BlueProgressCard extends StatelessWidget {
+  const BlueProgressCard(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.onTap,
+      required this.onEditTap,
+      required this.cardColor,
+      required this.titleColor,
+      required this.subtitleColor,
+      required this.progressValue,
+      required this.progressValueColor,
+      required this.progressBgColor});
+
+  final String title;
+  final String subtitle;
+  final double progressValue;
+  final GestureTapCallback onTap;
+  final GestureTapCallback onEditTap;
+  final Color cardColor;
+  final Color titleColor;
+  final Color subtitleColor;
+  final Color progressValueColor;
+  final Color progressBgColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final _size = MediaQuery.of(context).size;
+    return GestureDetector(
+      onTap: onTap,
+      child: SizedBox(
+        height: _size.height * 0.13,
+        child: Card(
+          color: cardColor,
+          elevation: 5,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.sp),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircularProgressIndicator(
+                          value: progressValue / 100,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(progressValueColor),
+                          backgroundColor: progressBgColor.withOpacity(0.3),
+                        ),
+                        Text(
+                          '${progressValue.toInt()}%',
+                          style: AppTextStyles.s14w500cloginFieldValue
+                              .copyWith(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    HorizontalSizedBox(width: 15.sp),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: AppTextStyles.s12w500chatPersonName.copyWith(
+                            color: titleColor,
+                          ),
+                        ),
+                        VerticalSizeBox(height: 5.sp),
+                        Text(
+                          subtitle,
+                          style: AppTextStyles.s16w700black
+                              .copyWith(color: subtitleColor),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                IconButton(
+                  onPressed: onEditTap,
+                  icon: const Icon(
+                    Icons.edit,
+                    color: AppColors.loginFieldValueColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CalorieIntakeCard extends StatelessWidget {
+  const CalorieIntakeCard(
+      {super.key,
+      required this.progressValue,
+      required this.todayAllowance,
+      required this.remainingAllowance});
+  final double progressValue;
+  final int todayAllowance;
+  final int remainingAllowance;
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: AppColors.loginPageTitleColor,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 15.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Calorie Intake',
+              style: AppTextStyles.s16w700black.copyWith(
+                color: AppColors.loginFieldValueColor,
+              ),
+            ),
+            VerticalSizeBox(height: 20.sp),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.sp),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      SizedBox(
+                        height: 120.sp,
+                        width: 120.sp,
+                        child: CircularProgressIndicator(
+                          value: progressValue / 100,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            progressValue < 100
+                                ? AppColors.trackerIconColor
+                                : AppColors.darkRedColor,
+                          ),
+                          strokeWidth: 15.0,
+                          backgroundColor:
+                              AppColors.loginFieldValueColor.withOpacity(0.3),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          const Text(
+                            'Progress',
+                            style: AppTextStyles.s10w500white,
+                          ),
+                          Text(
+                            '${progressValue.toInt()}%',
+                            style: AppTextStyles.s40w700trackerIcon,
+                          ),
+                          const Text(
+                            '500 / 1200kcal',
+                            style: AppTextStyles.s8w500white,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Today’s Allowance',
+                        style: AppTextStyles.s12w500chatPersonName.copyWith(
+                          color: AppColors.loginFieldValueColor,
+                        ),
+                      ),
+                      VerticalSizeBox(height: 10.sp),
+                      Text(
+                        '$todayAllowance kcal',
+                        style: AppTextStyles.s32w700loginBg,
+                      ),
+                      VerticalSizeBox(height: 20.sp),
+                      Text(
+                        'Remaining Allowance',
+                        style: AppTextStyles.s12w500chatPersonName.copyWith(
+                          color: AppColors.loginFieldValueColor,
+                        ),
+                      ),
+                      VerticalSizeBox(height: 10.sp),
+                      Text(
+                        '$remainingAllowance kcal',
+                        style: AppTextStyles.s32w700loginBg,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WeightTrackerCard extends StatelessWidget {
+  const WeightTrackerCard(
+      {super.key,
+      required this.goalWeight,
+      required this.currentWeight,
+      required this.goalProgressColor,
+      required this.currentProgressColor,
+      required this.weightLeft,
+      required this.currentPercent});
+  final double goalWeight;
+  final double currentWeight;
+  final int weightLeft;
+  final int currentPercent;
+  final Color goalProgressColor;
+  final Color currentProgressColor;
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: AppColors.lightPinkColor,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 20.sp, horizontal: 20.sp),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                          text: '${goalWeight.toInt()}',
+                          style: AppTextStyles.s24w700white),
+                      WidgetSpan(
+                        child: Transform.translate(
+                          offset: const Offset(0.0, 4.0),
+                          child: Text(
+                            'kg',
+                            style: AppTextStyles.s12w500chatPersonName.copyWith(
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                VerticalSizeBox(height: 5.sp),
+                SizedBox(
+                  width: 120.sp,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Goal Weight',
+                        style: AppTextStyles.s12w700black
+                            .copyWith(color: AppColors.loginPageBgColor),
+                      ),
+                      Text(
+                        '$weightLeft' 'w left',
+                        style: AppTextStyles.s12w500cloginFieldHeader
+                            .copyWith(color: AppColors.loginPageBgColor),
+                      ),
+                    ],
+                  ),
+                ),
+                VerticalSizeBox(height: 10.sp),
+                SizedBox(
+                  width: 120.sp,
+                  child: LinearProgressIndicator(
+                    value: goalWeight / 100,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      goalProgressColor,
+                    ),
+                    backgroundColor: goalProgressColor.withOpacity(0.2),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                          text: '${currentWeight.toInt()}',
+                          style: AppTextStyles.s24w700white),
+                      WidgetSpan(
+                        child: Transform.translate(
+                          offset: const Offset(0.0, 4.0),
+                          child: Text(
+                            'kg',
+                            style: AppTextStyles.s12w500chatPersonName.copyWith(
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                VerticalSizeBox(height: 5.sp),
+                SizedBox(
+                  width: 120.sp,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Current weight',
+                        style: AppTextStyles.s12w700black
+                            .copyWith(color: AppColors.loginPageBgColor),
+                      ),
+                      Text(
+                        '$currentPercent%',
+                        style: AppTextStyles.s12w500cloginFieldHeader
+                            .copyWith(color: AppColors.loginPageBgColor),
+                      ),
+                    ],
+                  ),
+                ),
+                VerticalSizeBox(height: 10.sp),
+                SizedBox(
+                  width: 120.sp,
+                  child: LinearProgressIndicator(
+                    value: currentWeight / 100,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      currentProgressColor,
+                    ),
+                    backgroundColor: currentProgressColor.withOpacity(0.2),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ChartCard1 extends StatefulWidget {
+  const ChartCard1({
+    super.key,
+    required this.values,
+  });
+  final List<double> values;
+
+  @override
+  State<ChartCard1> createState() => _ChartCard1State();
+}
+
+class _ChartCard1State extends State<ChartCard1> {
+  final List<String> names = ['Carbs', 'Protein', 'Fats'];
+
+  String? currentValue='31 Dec 2022';
+  List<String> dropDownValues = ['31 Dec 2022', '30 Dec 2022', '29 Dec 2022'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: AppColors.trackerIconColor,
+      child: Padding(
+        padding: EdgeInsets.all(10.sp),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Macronutrients',
+                  style: AppTextStyles.s16w700black.copyWith(
+                    color: AppColors.loginFieldValueColor,
+                  ),
+                ),
+                SizedBox(
+                  width: 126.sp,
+                  height: 35.sp,
+                  child: DropdownButtonFormField<String>(
+                    value: currentValue,
+                    items: dropDownValues
+                        .map(
+                          (item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(item,
+                                style: AppTextStyles.s14w500cloginFieldValue),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) => setState(
+                      () {
+                        value != null ? currentValue = value : null;
+                      },
+                    ),
+                    iconSize: 18,
+                    icon: const Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      color: AppColors.loginFieldValueColor,
+                    ),
+                    dropdownColor: AppColors.loginPageBgColor,
+                    style: AppTextStyles.s14w500cloginFieldValue,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: AppColors.loginPageBgColor,
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10)),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: AspectRatio(
+                aspectRatio: 1.6,
+                child: BarChart(
+                  BarChartData(
+                      barGroups: [
+                        for (int i = 0; i < 3; i++) ...<BarChartGroupData>{
+                          BarChartGroupData(
+                            x: i,
+                            barRods: [
+                              BarChartRodData(
+                                  toY: widget.values[i],
+                                  color: AppColors.loginPageTitleColor,
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    topRight: Radius.circular(5),
+                                  )),
+                            ],
+                          ),
+                        },
+                      ],
+                      borderData: FlBorderData(
+                          show: true,
+                          border: const Border(
+                            left: BorderSide.none,
+                            right: BorderSide.none,
+                            top: BorderSide.none,
+                            bottom: BorderSide(
+                              width: 0.5,
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          )),
+                      titlesData: FlTitlesData(
+                        show: true,
+                        bottomTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            reservedSize: 20,
+                            showTitles: true,
+                            getTitlesWidget: (value, meta) {
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: DefaultTextStyle(
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.s12w400black.copyWith(
+                                    color: AppColors.loginFieldValueColor,
+                                  ),
+                                  child: Text(
+                                    names[value.toInt()],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        rightTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: false,
+                          ),
+                        ),
+                        topTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: false,
+                          ),
+                        ),
+                        leftTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            interval: 5,
+                            reservedSize: 30,
+                            showTitles: true,
+                            getTitlesWidget: (value, meta) {
+                              if (value == meta.max) {
+                                return const SizedBox();
+                              }
+                              final stringValue = value.toInt().toString();
+                              return DefaultTextStyle(
+                                  style: AppTextStyles.s12w400black.copyWith(
+                                    color: AppColors.loginFieldValueColor,
+                                  ),
+                                  child: Text(stringValue.toString()));
+                            },
+                          ),
+                        ),
+                      ),
+                      gridData: FlGridData(
+                        horizontalInterval: 5,
+                        show: true,
+                        drawVerticalLine: false,
+                        getDrawingHorizontalLine: (value) {
+                          return FlLine(
+                            strokeWidth: 0.5,
+                            dashArray: [5],
+                            color: AppColors.loginFieldValueColor,
+                          );
+                        },
+                      ),
+                      barTouchData: BarTouchData(
+                        touchTooltipData: BarTouchTooltipData(),
+                      )),
+                ),
+              ),
             ),
           ],
         ),

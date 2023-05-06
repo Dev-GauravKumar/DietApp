@@ -244,6 +244,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                           const EdgeInsets.symmetric(
                                               vertical: 10.0, horizontal: 10)),
                                 ),
+                              
                               ),
                               const VerticalSizeBox(height: 15),
                               const CompulsoryHeader(

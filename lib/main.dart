@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
               backgroundColor: AppColors.loginPageBgColor,
+              dialogBackgroundColor: AppColors.searchBoxBgColor,
             ),
             home: const LoginPage(),
             onGenerateRoute: RouteGenerator.generateRoute,

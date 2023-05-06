@@ -65,4 +65,7 @@ class AppImages {
       'assets/images/settings_screen_images/logout.svg';
   static const String editLine =
       'assets/images/settings_screen_images/edit-line.svg';
+  static const String calendarIcon =
+      'assets/images/schedule_images/calendarIcon.svg';
+  static const String clockIcon = 'assets/images/schedule_images/clockIcon.svg';
 }

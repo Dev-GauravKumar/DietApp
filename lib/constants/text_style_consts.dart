@@ -113,4 +113,29 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.blackColor,
   );
+  static const s16w700black = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: AppColors.blackColor,
+  );
+  static const s10w500white = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: AppColors.loginFieldValueColor,
+  );
+  static const s8w500white = TextStyle(
+    fontSize: 8,
+    fontWeight: FontWeight.w500,
+    color: AppColors.loginFieldValueColor,
+  );
+  static const s40w700trackerIcon = TextStyle(
+    fontSize: 40,
+    fontWeight: FontWeight.w700,
+    color: AppColors.trackerIconColor,
+  );
+  static const s32w700loginBg = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: AppColors.loginPageBgColor,
+  );
 }

@@ -18,4 +18,7 @@ class AppColors {
   static const Color chatMessageColor = Color(0xffA4A4A4);
   static const Color chatPersonNameColor = Color(0xff4D5256);
   static const Color newAppointmentColor = Color(0xff70D2B0);
+  static const Color darkRedColor = Color(0xffD80000);
+  static const Color lightPinkColor = Color(0xffECABD4);
+  static const Color yellowProgressColor = Color(0xffFECA1F);
 }
