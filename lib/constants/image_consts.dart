@@ -29,6 +29,10 @@ class AppImages {
       'assets/images/home_page_images/selectedSchedule.svg';
   static const String selectedSetting =
       'assets/images/home_page_images/selectedSetting.svg';
+  static const String filledStarImage =
+      'assets/images/home_page_images/filledStarImage.svg';
+  static const String notFilledStarImage =
+      'assets/images/home_page_images/notFilledStarImage.svg';
   static const String appleImage =
       'assets/images/home_screen_card_images/appleImage.svg';
   static const String arroundMeImage =

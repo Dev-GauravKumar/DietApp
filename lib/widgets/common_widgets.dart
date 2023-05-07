@@ -1266,7 +1266,7 @@ class ChartCard1 extends StatefulWidget {
 class _ChartCard1State extends State<ChartCard1> {
   final List<String> names = ['Carbs', 'Protein', 'Fats'];
 
-  String? currentValue='31 Dec 2022';
+  String? currentValue = '31 Dec 2022';
   List<String> dropDownValues = ['31 Dec 2022', '30 Dec 2022', '29 Dec 2022'];
 
   @override
@@ -1430,6 +1430,204 @@ class _ChartCard1State extends State<ChartCard1> {
                       )),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BlogCard extends StatelessWidget {
+  const BlogCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      color: AppColors.searchBoxBgColor,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: SizedBox(
+                height: 90.sp,
+                width: 90.sp,
+                child: Image.network(
+                  'https://images.unsplash.com/photo-1561043433-aaf687c4cf04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            HorizontalSizedBox(width: 10.sp),
+            Expanded(
+              child: Column(
+                children: [
+                  Text('Diet Ideas on a Holiday in a western country'),
+                  VerticalSizeBox(height: 10.sp),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.circle,
+                        color: AppColors.loginPageTitleColor,
+                        size: 10,
+                      ),
+                      HorizontalSizedBox(width: 5.sp),
+                      Text(
+                        'Admin',
+                        style: AppTextStyles.s12w500chatPersonName
+                            .copyWith(color: AppColors.loginPageBgColor),
+                      ),
+                      HorizontalSizedBox(width: 10.sp),
+                      SvgPicture.asset(
+                        AppImages.clockIcon,
+                        color: AppColors.loginPageTitleColor,
+                      ),
+                      HorizontalSizedBox(width: 5.sp),
+                      Text(
+                        '5 min',
+                        style: AppTextStyles.s12w500chatPersonName
+                            .copyWith(color: AppColors.loginPageBgColor),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ResourceCard extends StatelessWidget {
+  const ResourceCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: AppColors.searchBoxBgColor,
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(20.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Resource 2',
+                  style: AppTextStyles.s22w600black,
+                ),
+                Text(
+                  '15-Dec-2022    10:27AM',
+                  style: AppTextStyles.s10w400black
+                      .copyWith(color: AppColors.darkGreyColor),
+                ),
+              ],
+            ),
+            VerticalSizeBox(height: 15.sp),
+            Text(
+              "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+              style: AppTextStyles.s12w400black
+                  .copyWith(wordSpacing: 5, height: 2),
+            ),
+            VerticalSizeBox(height: 15.sp),
+            RichText(
+                text: TextSpan(
+              children: [
+                TextSpan(
+                    text: 'Resource link : ',
+                    style: AppTextStyles.s12w500chatPersonName.copyWith(
+                      color: AppColors.blackColor,
+                    )),
+                TextSpan(
+                    text: 'www.googledrive.com',
+                    style: AppTextStyles.s12w500chatPersonName.copyWith(
+                      color: AppColors.loginPageBgColor,
+                    )),
+              ],
+            )),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RatingsCard extends StatelessWidget {
+  const RatingsCard(
+      {super.key,
+      required this.name,
+      required this.review,
+      required this.ratings,
+      required this.profileImage,
+      required this.cardColor,
+      required this.deviderColor});
+  final String name;
+  final String review;
+  final int ratings;
+  final String profileImage;
+  final Color cardColor;
+  final Color deviderColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5.0,
+      color: cardColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            HorizontalSizedBox(width: 10.sp),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    review,
+                    style: AppTextStyles.s14w400cloginText
+                        .copyWith(color: AppColors.blackColor),
+                  ),
+                  VerticalSizeBox(height: 10.sp),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      for (int i = 0; i <= 5; i++)
+                        i <= ratings
+                            ? SvgPicture.asset(AppImages.filledStarImage)
+                            : SvgPicture.asset(AppImages.notFilledStarImage),
+                    ],
+                  ),
+                  VerticalSizeBox(height: 10.sp),
+                  Text(
+                    name,
+                    style: AppTextStyles.s14w400cloginText
+                        .copyWith(color: AppColors.blackColor),
+                  ),
+                ],
+              ),
+            ),
+            HorizontalSizedBox(width: 20.sp),
+            CircleAvatar(
+              backgroundImage: NetworkImage(profileImage),
+              radius: 35,
             ),
           ],
         ),

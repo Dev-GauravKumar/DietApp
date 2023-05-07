@@ -143,6 +143,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.pushNamed(
                             context, RouteGenerator.myDietProgramScreen);
                         break;
+                      case 1:
+                        Navigator.pushNamed(
+                            context, RouteGenerator.dietIdeasScreen);
+                        break;
+                      case 2:
+                        Navigator.pushNamed(
+                            context, RouteGenerator.feedbacksScreen);
+                        break;
                       default:
                         Navigator.pushNamed(context, RouteGenerator.homePage);
                     }

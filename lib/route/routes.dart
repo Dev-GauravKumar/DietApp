@@ -1,6 +1,9 @@
 import 'package:diet_app/screens/auth_screens/forgot_password_page.dart';
 import 'package:diet_app/screens/auth_screens/login_page.dart';
 import 'package:diet_app/screens/auth_screens/signup_page.dart';
+import 'package:diet_app/screens/diet_ideas_screens/diet_idea_screen.dart';
+import 'package:diet_app/screens/feedback_screens/add_feedback_screen.dart';
+import 'package:diet_app/screens/feedback_screens/feedbacks_screen.dart';
 import 'package:diet_app/screens/home_page.dart';
 import 'package:diet_app/screens/home_page_card_screens/my_diet_program_screen1.dart';
 import 'package:diet_app/screens/home_page_card_screens/my_diet_program_screen2.dart';
@@ -25,6 +28,10 @@ abstract class RouteGenerator {
   static const String dietitianBioScreen = '/dietitianBioScreen';
   static const String appointmentBookingScreen = '/appointmentBookingScreen';
   static const String myDietProgramScreen = '/myDietProgramScreen';
+  static const String dietIdeasScreen = '/dietIdeasScreen';
+  static const String addFeedbackScreen = '/addFeedbackScreen';
+  static const String feedbacksScreen = '/feedbacksScreen';
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     Object? args = settings.arguments;
     switch (settings.name) {
@@ -55,6 +62,12 @@ abstract class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const MyAccountScreen());
       case myDietProgramScreen:
         return MaterialPageRoute(builder: (_) => const DietProgramScreen2());
+      case dietIdeasScreen:
+        return MaterialPageRoute(builder: (_) => const DietIdeaScreen());
+      case addFeedbackScreen:
+        return MaterialPageRoute(builder: (_) => const AddFeedbackScreen());
+      case feedbacksScreen:
+        return MaterialPageRoute(builder: (_) => const FeedbacksScreen());
       default:
         throw const RouteException("Route not found");
     }
