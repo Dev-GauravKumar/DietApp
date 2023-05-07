@@ -1438,75 +1438,75 @@ class _ChartCard1State extends State<ChartCard1> {
   }
 }
 
-class BlogCard extends StatelessWidget {
-  const BlogCard({super.key});
+// class BlogCard extends StatelessWidget {
+//   const BlogCard({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 5.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      color: AppColors.searchBoxBgColor,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: SizedBox(
-                height: 90.sp,
-                width: 90.sp,
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1561043433-aaf687c4cf04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            HorizontalSizedBox(width: 10.sp),
-            Expanded(
-              child: Column(
-                children: [
-                  Text('Diet Ideas on a Holiday in a western country'),
-                  VerticalSizeBox(height: 10.sp),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        color: AppColors.loginPageTitleColor,
-                        size: 10,
-                      ),
-                      HorizontalSizedBox(width: 5.sp),
-                      Text(
-                        'Admin',
-                        style: AppTextStyles.s12w500chatPersonName
-                            .copyWith(color: AppColors.loginPageBgColor),
-                      ),
-                      HorizontalSizedBox(width: 10.sp),
-                      SvgPicture.asset(
-                        AppImages.clockIcon,
-                        color: AppColors.loginPageTitleColor,
-                      ),
-                      HorizontalSizedBox(width: 5.sp),
-                      Text(
-                        '5 min',
-                        style: AppTextStyles.s12w500chatPersonName
-                            .copyWith(color: AppColors.loginPageBgColor),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       elevation: 5.0,
+//       shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.circular(20),
+//       ),
+//       color: AppColors.searchBoxBgColor,
+//       child: Padding(
+//         padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
+//         child: Row(
+//           crossAxisAlignment: CrossAxisAlignment.center,
+//           children: [
+//             ClipRRect(
+//               borderRadius: BorderRadius.circular(15),
+//               child: SizedBox(
+//                 height: 90.sp,
+//                 width: 90.sp,
+//                 child: Image.network(
+//                   'https://images.unsplash.com/photo-1561043433-aaf687c4cf04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+//                   fit: BoxFit.cover,
+//                 ),
+//               ),
+//             ),
+//             HorizontalSizedBox(width: 10.sp),
+//             Expanded(
+//               child: Column(
+//                 children: [
+//                   Text('Diet Ideas on a Holiday in a western country'),
+//                   VerticalSizeBox(height: 10.sp),
+//                   Row(
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [
+//                       Icon(
+//                         Icons.circle,
+//                         color: AppColors.loginPageTitleColor,
+//                         size: 10,
+//                       ),
+//                       HorizontalSizedBox(width: 5.sp),
+//                       Text(
+//                         'Admin',
+//                         style: AppTextStyles.s12w500chatPersonName
+//                             .copyWith(color: AppColors.loginPageBgColor),
+//                       ),
+//                       HorizontalSizedBox(width: 10.sp),
+//                       SvgPicture.asset(
+//                         AppImages.clockIcon,
+//                         color: AppColors.loginPageTitleColor,
+//                       ),
+//                       HorizontalSizedBox(width: 5.sp),
+//                       Text(
+//                         '5 min',
+//                         style: AppTextStyles.s12w500chatPersonName
+//                             .copyWith(color: AppColors.loginPageBgColor),
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class ResourceCard extends StatelessWidget {
   const ResourceCard({super.key});

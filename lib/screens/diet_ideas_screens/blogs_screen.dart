@@ -1,12 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:diet_app/constants/color_consts.dart';
+import 'package:diet_app/constants/image_consts.dart';
 import 'package:diet_app/constants/text_style_consts.dart';
 import 'package:diet_app/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BlogsScreen extends StatefulWidget {
-  const BlogsScreen({super.key});
+  const BlogsScreen({Key? key}) : super(key: key);
 
   @override
   State<BlogsScreen> createState() => _BlogsScreenState();
@@ -24,9 +26,9 @@ class _BlogsScreenState extends State<BlogsScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SizedBox(
-          height: size.height * 0.3,
-          child: Expanded(
+        Expanded(
+          child: SizedBox(
+            height: size.height * 0.3,
             child: CarouselSlider.builder(
               itemCount: banners.length,
               itemBuilder: (context, index, realIndex) {
@@ -129,7 +131,77 @@ class _BlogsScreenState extends State<BlogsScreen> {
               itemCount: 10,
               physics: const BouncingScrollPhysics(),
               itemBuilder: ((context, index) {
-                return const BlogCard();
+                return Container(
+                  child: Card(
+                    elevation: 5.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    color: AppColors.searchBoxBgColor,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.sp, vertical: 15.sp),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: SizedBox(
+                              height: 90.sp,
+                              width: 90.sp,
+                              child: Image.network(
+                                'https://images.unsplash.com/photo-1561043433-aaf687c4cf04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          HorizontalSizedBox(width: 10.sp),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    'Diet Ideas on a Holiday in a western country'),
+                                VerticalSizeBox(height: 10.sp),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      color: AppColors.loginPageTitleColor,
+                                      size: 10,
+                                    ),
+                                    HorizontalSizedBox(width: 5.sp),
+                                    Text(
+                                      'Admin',
+                                      style: AppTextStyles.s12w500chatPersonName
+                                          .copyWith(
+                                              color:
+                                                  AppColors.loginPageBgColor),
+                                    ),
+                                    HorizontalSizedBox(width: 10.sp),
+                                    SvgPicture.asset(
+                                      AppImages.clockIcon,
+                                      color: AppColors.loginPageTitleColor,
+                                    ),
+                                    HorizontalSizedBox(width: 5.sp),
+                                    Text(
+                                      '5 min',
+                                      style: AppTextStyles.s12w500chatPersonName
+                                          .copyWith(
+                                              color:
+                                                  AppColors.loginPageBgColor),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               }),
               separatorBuilder: (BuildContext context, int index) {
                 return VerticalSizeBox(height: 10.sp);
