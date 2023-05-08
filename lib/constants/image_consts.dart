@@ -59,6 +59,18 @@ class AppImages {
       'assets/images/tracker_screen_images/bloodComponentImage.svg';
   static const String myAccountImage =
       'assets/images/settings_screen_images/myAccount.svg';
+  static const String dashedCircleImage =
+      'assets/images/tracker_screen_images/dashedCircleImage.svg';
+  static const String protienIcon =
+      'assets/images/tracker_screen_images/protienIcon.svg';
+  static const String fatIcon =
+      'assets/images/tracker_screen_images/fatIcon.svg';
+  static const String carbIcon =
+      'assets/images/tracker_screen_images/carbIcon.svg';
+  static const String forkIcon =
+      'assets/images/tracker_screen_images/forkIcon.svg';
+  static const String caloriesIcon =
+      'assets/images/tracker_screen_images/caloriesIcon.svg';
   static const String serviceImage =
       'assets/images/settings_screen_images/service.svg';
   static const String receiptImage =

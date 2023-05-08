@@ -43,6 +43,8 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   fl_chart: ^0.62.0
   flutter_rating_bar: ^4.0.1
+  percent_indicator: ^4.2.3
+  rulers: ^1.0.7
 
 
 dev_dependencies:

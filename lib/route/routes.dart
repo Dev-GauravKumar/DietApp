@@ -12,6 +12,11 @@ import 'package:diet_app/screens/settings_screens/dietitian.dart';
 import 'package:diet_app/screens/settings_screens/my_account_screen.dart';
 import 'package:diet_app/screens/settings_screens/receipts_screen.dart';
 import 'package:diet_app/screens/settings_screens/service_programme_screen.dart';
+import 'package:diet_app/screens/tracker_screens/add_meal_screen.dart';
+import 'package:diet_app/screens/tracker_screens/meals_plan_page.dart';
+import 'package:diet_app/screens/tracker_screens/meals_screen.dart';
+import 'package:diet_app/screens/tracker_screens/new_weight_screen.dart';
+import 'package:diet_app/screens/tracker_screens/weight_tracker_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/chat_screens/chat_box_screen.dart';
@@ -31,6 +36,11 @@ abstract class RouteGenerator {
   static const String dietIdeasScreen = '/dietIdeasScreen';
   static const String addFeedbackScreen = '/addFeedbackScreen';
   static const String feedbacksScreen = '/feedbacksScreen';
+  static const String mealsScreen = '/mealsScreen';
+  static const String mealsPlanPage = '/mealsPlanPage';
+  static const String addMealScreen = '/addMealScreen';
+  static const String weightTrackerScreen = '/weightTrackerScreen';
+  static const String newWeightScreen = '/newWeightScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     Object? args = settings.arguments;
@@ -68,6 +78,17 @@ abstract class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const AddFeedbackScreen());
       case feedbacksScreen:
         return MaterialPageRoute(builder: (_) => const FeedbacksScreen());
+      case mealsPlanPage:
+        return MaterialPageRoute(builder: (_) => const MealPlanPage());
+      case addMealScreen:
+        return MaterialPageRoute(builder: (_) => const AddMealScreen());
+      case weightTrackerScreen:
+        return MaterialPageRoute(builder: (_) => const WeightTrackerScreen());
+      case newWeightScreen:
+        return MaterialPageRoute(builder: (_) => const NewWeightScreen());
+      case mealsScreen:
+        return MaterialPageRoute(
+            builder: (_) => MealsScreen(kcal: int.parse(args.toString())));
       default:
         throw const RouteException("Route not found");
     }

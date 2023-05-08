@@ -138,4 +138,19 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.loginPageBgColor,
   );
+  static const s44w700loginBg = TextStyle(
+    fontSize: 44,
+    fontWeight: FontWeight.w700,
+    color: AppColors.loginPageBgColor,
+  );
+  static const s30w700black = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w700,
+    color: AppColors.blackColor,
+  );
+  static const s60w700loginBg = TextStyle(
+    fontSize: 60,
+    fontWeight: FontWeight.w700,
+    color: AppColors.loginPageBgColor,
+  );
 }

@@ -576,12 +576,14 @@ class CustomButton extends StatelessWidget {
       required this.width,
       required this.buttonTitle,
       required this.buttonColor,
-      required this.onTap});
+      required this.onTap,
+      this.elevation});
   final double height;
   final double width;
   final String buttonTitle;
   final Color buttonColor;
   final GestureTapCallback onTap;
+  final double? elevation;
 
   @override
   Widget build(BuildContext context) {
@@ -591,7 +593,7 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          elevation: 0.0,
+          elevation: elevation ?? 0.0,
           primary: buttonColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
@@ -1526,7 +1528,7 @@ class ResourceCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Resource 2',
                   style: AppTextStyles.s22w600black,
                 ),
@@ -1628,6 +1630,234 @@ class RatingsCard extends StatelessWidget {
             CircleAvatar(
               backgroundImage: NetworkImage(profileImage),
               radius: 35,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MacronutrientsCard extends StatelessWidget {
+  const MacronutrientsCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: AppColors.searchBoxBgColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 25.sp),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(AppImages.protienIcon),
+                    HorizontalSizedBox(width: 20.sp),
+                    const Text('Proteins'),
+                  ],
+                ),
+                const Text('3g'),
+              ],
+            ),
+            VerticalSizeBox(height: 20.sp),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(AppImages.fatIcon),
+                    HorizontalSizedBox(width: 20.sp),
+                    const Text('Fats'),
+                  ],
+                ),
+                const Text('0.3g'),
+              ],
+            ),
+            VerticalSizeBox(height: 20.sp),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(AppImages.carbIcon),
+                    HorizontalSizedBox(width: 20.sp),
+                    const Text('Carbs'),
+                  ],
+                ),
+                const Text('3g'),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AddMealsTile extends StatelessWidget {
+  const AddMealsTile(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.tileColor});
+  final String title;
+  final String subtitle;
+  final Color tileColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: tileColor,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 20.sp),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: AppTextStyles.s18w500white,
+                ),
+                VerticalSizeBox(height: 5.sp),
+                Text(
+                  subtitle,
+                  style: AppTextStyles.s12w400black.copyWith(
+                    color: AppColors.loginFieldValueColor,
+                  ),
+                ),
+              ],
+            ),
+            const CircleAvatar(
+              backgroundColor: AppColors.yellowProgressColor,
+              child: Icon(
+                Icons.add,
+                color: AppColors.loginFieldValueColor,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FoodTile extends StatelessWidget {
+  const FoodTile(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.dotColor});
+  final String title;
+  final String subtitle;
+  final Color dotColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: AppColors.searchBoxBgColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 15.sp, horizontal: 25.sp),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: AppTextStyles.s16w500black,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.circle,
+                  size: 8,
+                  color: dotColor,
+                ),
+                HorizontalSizedBox(width: 5.sp),
+                Text(
+                  subtitle,
+                  style: AppTextStyles.s12w400black.copyWith(
+                    color: AppColors.darkGreyColor,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WeightPerformanceCard extends StatelessWidget {
+  const WeightPerformanceCard(
+      {super.key,
+      required this.date,
+      required this.weight,
+      required this.progressWeight,
+      required this.isProgress});
+  final String date;
+  final String weight;
+  final String progressWeight;
+  final bool isProgress;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      color: AppColors.searchBoxBgColor,
+      child: Padding(
+        padding: EdgeInsets.all(15.sp),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  date,
+                  style: AppTextStyles.s18w700black,
+                ),
+                Row(
+                  children: [
+                    isProgress
+                        ? const Icon(
+                            Icons.arrow_downward,
+                            color: Colors.green,
+                            size: 15,
+                          )
+                        : const Icon(
+                            Icons.arrow_upward,
+                            color: AppColors.darkRedColor,
+                            size: 15,
+                          ),
+                    HorizontalSizedBox(width: 5.sp),
+                    Text(
+                      progressWeight,
+                      style: AppTextStyles.s14w700black
+                          .copyWith(color: AppColors.darkGreyColor),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            RichText(
+              text: TextSpan(children: [
+                TextSpan(text: weight, style: AppTextStyles.s30w700black),
+                const TextSpan(text: 'kg', style: AppTextStyles.s20w700black)
+              ]),
             ),
           ],
         ),
