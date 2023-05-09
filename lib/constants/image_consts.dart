@@ -9,6 +9,8 @@ class AppImages {
       'assets/images/auth_images/calendarIcon.svg';
   static const String appBarProfileImage =
       'assets/images/home_page_images/profileImage.png';
+  static const String celebrationImage =
+      'assets/images/home_page_images/celebrate.svg';
   static const String appBarBellIcon =
       'assets/images/home_page_images/notificationBell.svg';
   static const String homeIcon = 'assets/images/home_page_images/homeIcon.svg';

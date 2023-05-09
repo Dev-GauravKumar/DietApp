@@ -151,6 +151,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.pushNamed(
                             context, RouteGenerator.feedbacksScreen);
                         break;
+                      case 3:
+                        Navigator.pushNamed(
+                            context, RouteGenerator.plansScreen);
+                        break;
                       default:
                         Navigator.pushNamed(context, RouteGenerator.homePage);
                     }

@@ -7,6 +7,7 @@ import 'package:diet_app/screens/feedback_screens/feedbacks_screen.dart';
 import 'package:diet_app/screens/home_page.dart';
 import 'package:diet_app/screens/home_page_card_screens/my_diet_program_screen1.dart';
 import 'package:diet_app/screens/home_page_card_screens/my_diet_program_screen2.dart';
+import 'package:diet_app/screens/plans_screens/plan_screen.dart';
 import 'package:diet_app/screens/schedule_screens/appointment_booking_screen.dart';
 import 'package:diet_app/screens/settings_screens/dietitian.dart';
 import 'package:diet_app/screens/settings_screens/my_account_screen.dart';
@@ -43,6 +44,7 @@ abstract class RouteGenerator {
   static const String weightTrackerScreen = '/weightTrackerScreen';
   static const String newWeightScreen = '/newWeightScreen';
   static const String bloodComponentTracker = '/bloodComponentTracker';
+  static const String plansScreen = '/plansScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     Object? args = settings.arguments;
@@ -90,6 +92,8 @@ abstract class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const NewWeightScreen());
       case bloodComponentTracker:
         return MaterialPageRoute(builder: (_) => const BloodComponentTracker());
+      case plansScreen:
+        return MaterialPageRoute(builder: (_) => const PlansScreen());
       case mealsScreen:
         return MaterialPageRoute(
             builder: (_) => MealsScreen(kcal: int.parse(args.toString())));

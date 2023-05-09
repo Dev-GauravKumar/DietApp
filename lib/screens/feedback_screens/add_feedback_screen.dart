@@ -239,7 +239,13 @@ class _AddFeedbackScreenState extends State<AddFeedbackScreen> {
                       width: 130.sp,
                       buttonTitle: 'Submit',
                       buttonColor: AppColors.loginPageBgColor,
-                      onTap: () {}),
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: ((context) {
+                              return thanksDialog();
+                            }));
+                      }),
                   CustomButton(
                       height: 40.sp,
                       width: 130.sp,
@@ -250,6 +256,47 @@ class _AddFeedbackScreenState extends State<AddFeedbackScreen> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget thanksDialog() {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: SizedBox(
+        height: 250.sp,
+        width: 120.sp,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.all(8.sp),
+                  child: Icon(
+                    Icons.close,
+                    size: 15,
+                  ),
+                )),
+            SvgPicture.asset(AppImages.celebrationImage),
+            VerticalSizeBox(height: 10.sp),
+            Text(
+              'Thank You!',
+              style: AppTextStyles.s22w700cloginTitle
+                  .copyWith(color: AppColors.blackColor),
+            ),
+            VerticalSizeBox(height: 10.sp),
+            SizedBox(
+              width: 250.sp,
+              child: Text(
+                'Your Feedback has been Successfully Submitted!',
+                style: AppTextStyles.s18w500white
+                    .copyWith(color: AppColors.blackColor),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
         ),
       ),
     );
