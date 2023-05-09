@@ -64,6 +64,12 @@ class _TrackerScreenState extends State<TrackerScreen> {
                             RouteGenerator.weightTrackerScreen,
                           );
                           break;
+                        case 2:
+                          Navigator.pushNamed(
+                            context,
+                            RouteGenerator.bloodComponentTracker,
+                          );
+                          break;
                         default:
                       }
                     },

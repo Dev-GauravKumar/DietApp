@@ -84,4 +84,10 @@ class AppImages {
   static const String calendarIcon =
       'assets/images/schedule_images/calendarIcon.svg';
   static const String clockIcon = 'assets/images/schedule_images/clockIcon.svg';
+  static const String blueChatBox =
+      'assets/images/chat_screen_images/blueChatBox.png';
+  static const String whiteChatBox =
+      'assets/images/chat_screen_images/whiteChatBox.png';
+  static const String fileChatBox =
+      'assets/images/chat_screen_images/fileChatBox.png';
 }

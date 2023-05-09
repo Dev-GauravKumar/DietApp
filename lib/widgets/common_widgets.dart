@@ -385,26 +385,116 @@ AppBar simpleAppBar(BuildContext context, {required String title}) {
   );
 }
 
-class MessageBox extends StatelessWidget {
-  const MessageBox({super.key, required this.message});
+class RecieveMessageBox extends StatelessWidget {
+  const RecieveMessageBox({super.key, required this.message});
+  final String message;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(AppImages.blueChatBox), fit: BoxFit.fill),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 30.sp),
+            child: Text(
+              message,
+              style: AppTextStyles.s14w500cloginFieldValue,
+            ),
+          ),
+        ),
+        VerticalSizeBox(height: 5.sp),
+        Text(
+          '1 day ago',
+          style: AppTextStyles.s12w500chatPersonName,
+        ),
+      ],
+    );
+  }
+}
+
+class FileChatBox extends StatelessWidget {
+  const FileChatBox(
+      {super.key, required this.fileName, required this.fileSize});
+  final String fileName;
+  final String fileSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(AppImages.fileChatBox), fit: BoxFit.fill),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: 20.sp, right: 80.sp, left: 20.sp, bottom: 80.sp),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  fileName,
+                  style: AppTextStyles.s14w500cloginFieldValue
+                      .copyWith(color: AppColors.blackColor),
+                ),
+                VerticalSizeBox(
+                  height: 5.sp,
+                ),
+                Text(
+                  fileSize,
+                  style: AppTextStyles.s14w500cloginFieldValue
+                      .copyWith(color: AppColors.loginPageBgColor),
+                ),
+              ],
+            ),
+          ),
+        ),
+        VerticalSizeBox(height: 5.sp),
+        Text(
+          '1 day ago',
+          style: AppTextStyles.s12w500chatPersonName,
+        ),
+      ],
+    );
+  }
+}
+
+class SendMessageBox extends StatelessWidget {
+  const SendMessageBox({super.key, required this.message});
   final String message;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(),
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(10),
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.zero,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(AppImages.whiteChatBox), fit: BoxFit.fill),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 30.sp),
+            child: Text(
+              message,
+              style: AppTextStyles.s14w500cloginFieldValue
+                  .copyWith(color: AppColors.blackColor),
+            ),
+          ),
         ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.sp, horizontal: 15.sp),
-        child: Text(message),
-      ),
+        VerticalSizeBox(height: 5.sp),
+        Text(
+          '1 day ago',
+          style: AppTextStyles.s12w500chatPersonName,
+        ),
+      ],
     );
   }
 }
@@ -1857,6 +1947,278 @@ class WeightPerformanceCard extends StatelessWidget {
               text: TextSpan(children: [
                 TextSpan(text: weight, style: AppTextStyles.s30w700black),
                 const TextSpan(text: 'kg', style: AppTextStyles.s20w700black)
+              ]),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BloodGlucoseCard extends StatefulWidget {
+  const BloodGlucoseCard({super.key, required this.values});
+  final List<double> values;
+
+  @override
+  State<BloodGlucoseCard> createState() => _BloodGlucoseCardState();
+}
+
+class _BloodGlucoseCardState extends State<BloodGlucoseCard> {
+  final List<String> showValues = ['04', '08', '10', '12', '16'];
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: AppColors.trackerIconColor,
+      child: Padding(
+        padding: EdgeInsets.all(10.sp),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.sp),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Lorem Ipsum',
+                    style: AppTextStyles.s16w700black.copyWith(
+                      color: AppColors.loginFieldValueColor,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        height: 30.sp,
+                        width: 30.sp,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Center(
+                          child: Text(
+                            'D',
+                            style: AppTextStyles.s14w700black.copyWith(
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      HorizontalSizedBox(width: 5.sp),
+                      Container(
+                        height: 30.sp,
+                        width: 30.sp,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Center(
+                          child: Text(
+                            'W',
+                            style: AppTextStyles.s14w700black.copyWith(
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      HorizontalSizedBox(width: 5.sp),
+                      Container(
+                        height: 30.sp,
+                        width: 30.sp,
+                        decoration: BoxDecoration(
+                            color: AppColors.loginPageBgColor,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Center(
+                          child: Text(
+                            'M',
+                            style: AppTextStyles.s14w700black.copyWith(
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      HorizontalSizedBox(width: 5.sp),
+                      Container(
+                        height: 30.sp,
+                        width: 30.sp,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Center(
+                          child: Text(
+                            'Y',
+                            style: AppTextStyles.s14w700black.copyWith(
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: AspectRatio(
+                aspectRatio: 1.6,
+                child: BarChart(
+                  BarChartData(
+                      barGroups: [
+                        for (int i = 0;
+                            i < widget.values.length;
+                            i++) ...<BarChartGroupData>{
+                          BarChartGroupData(
+                            x: i,
+                            barRods: [
+                              BarChartRodData(
+                                  toY: widget.values[i],
+                                  color: AppColors.loginPageTitleColor,
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    topRight: Radius.circular(5),
+                                  )),
+                            ],
+                          ),
+                        },
+                      ],
+                      borderData: FlBorderData(
+                          show: true,
+                          border: const Border(
+                            left: BorderSide.none,
+                            right: BorderSide.none,
+                            top: BorderSide.none,
+                            bottom: BorderSide(
+                              width: 0.5,
+                              color: AppColors.loginFieldValueColor,
+                            ),
+                          )),
+                      titlesData: FlTitlesData(
+                        show: true,
+                        bottomTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            reservedSize: 20,
+                            showTitles: true,
+                            getTitlesWidget: (value, meta) {
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: DefaultTextStyle(
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.s12w400black.copyWith(
+                                    color: AppColors.loginFieldValueColor,
+                                  ),
+                                  child: Text(
+                                    showValues[value.toInt()],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        rightTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: false,
+                          ),
+                        ),
+                        topTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            showTitles: false,
+                          ),
+                        ),
+                        leftTitles: AxisTitles(
+                          sideTitles: SideTitles(
+                            interval: 20000,
+                            reservedSize: 35,
+                            showTitles: true,
+                            getTitlesWidget: (value, meta) {
+                              if (value == meta.max) {
+                                return const SizedBox();
+                              }
+                              final stringValue = value.toInt().toString();
+                              return DefaultTextStyle(
+                                  style: AppTextStyles.s12w400black.copyWith(
+                                    color: AppColors.loginFieldValueColor,
+                                  ),
+                                  child: Text(stringValue.toString()));
+                            },
+                          ),
+                        ),
+                      ),
+                      gridData: FlGridData(
+                        show: true,
+                        drawVerticalLine: false,
+                        horizontalInterval: 20000,
+                        getDrawingHorizontalLine: (value) {
+                          return FlLine(
+                            strokeWidth: 0.5,
+                            dashArray: [5],
+                            color: AppColors.loginFieldValueColor,
+                          );
+                        },
+                      ),
+                      barTouchData: BarTouchData(
+                        touchTooltipData: BarTouchTooltipData(),
+                      )),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BloodPerformanceCard extends StatelessWidget {
+  const BloodPerformanceCard(
+      {super.key,
+      required this.name,
+      required this.quantity,
+      required this.progressQuantity,
+      required this.isProgress});
+  final String name;
+  final String quantity;
+  final String progressQuantity;
+  final bool isProgress;
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      color: AppColors.searchBoxBgColor,
+      child: Padding(
+        padding: EdgeInsets.all(15.sp),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: AppTextStyles.s18w700black,
+                ),
+                Row(
+                  children: [
+                    isProgress
+                        ? const Icon(
+                            Icons.arrow_downward,
+                            color: Colors.green,
+                            size: 15,
+                          )
+                        : const Icon(
+                            Icons.arrow_upward,
+                            color: AppColors.darkRedColor,
+                            size: 15,
+                          ),
+                    HorizontalSizedBox(width: 5.sp),
+                    Text(
+                      progressQuantity,
+                      style: AppTextStyles.s14w700black
+                          .copyWith(color: AppColors.darkGreyColor),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            RichText(
+              text: TextSpan(children: [
+                TextSpan(text: quantity, style: AppTextStyles.s30w700black),
+                const TextSpan(text: 'mg/dl', style: AppTextStyles.s20w700black)
               ]),
             ),
           ],
