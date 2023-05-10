@@ -2227,3 +2227,49 @@ class BloodPerformanceCard extends StatelessWidget {
     );
   }
 }
+
+class HealthRecordCard extends StatelessWidget {
+  const HealthRecordCard(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.date});
+  final String title;
+  final String subtitle;
+  final String date;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: AppColors.searchBoxBgColor,
+      child: Padding(
+        padding: EdgeInsets.all(15.sp),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: AppTextStyles.s16w700black,
+                ),
+                Text(
+                  date,
+                  style: AppTextStyles.s16w700black,
+                ),
+              ],
+            ),
+            VerticalSizeBox(height: 10.sp),
+            Text(
+              subtitle,
+              style: AppTextStyles.s14w400cloginText
+                  .copyWith(color: AppColors.darkGreyColor),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -1,3 +1,4 @@
+import 'package:diet_app/health_record_screen.dart';
 import 'package:diet_app/screens/auth_screens/forgot_password_page.dart';
 import 'package:diet_app/screens/auth_screens/login_page.dart';
 import 'package:diet_app/screens/auth_screens/signup_page.dart';
@@ -45,6 +46,7 @@ abstract class RouteGenerator {
   static const String newWeightScreen = '/newWeightScreen';
   static const String bloodComponentTracker = '/bloodComponentTracker';
   static const String plansScreen = '/plansScreen';
+   static const String healthRecordScreen = '/healthRecordScreen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     Object? args = settings.arguments;
@@ -94,6 +96,8 @@ abstract class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const BloodComponentTracker());
       case plansScreen:
         return MaterialPageRoute(builder: (_) => const PlansScreen());
+        case healthRecordScreen:
+        return MaterialPageRoute(builder: (_) => const HealthRecords());
       case mealsScreen:
         return MaterialPageRoute(
             builder: (_) => MealsScreen(kcal: int.parse(args.toString())));

@@ -153,6 +153,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         break;
                       case 3:
                         Navigator.pushNamed(
+                            context, RouteGenerator.healthRecordScreen);
+                        break;
+                      case 4:
+                        Navigator.pushNamed(
                             context, RouteGenerator.plansScreen);
                         break;
                       default:
