@@ -1,5 +1,4 @@
 import 'package:diet_app/constants/color_consts.dart';
-import 'package:diet_app/constants/image_consts.dart';
 import 'package:diet_app/constants/text_style_consts.dart';
 import 'package:diet_app/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,8 @@ class DietitianBio extends StatelessWidget {
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBody: true,
+      resizeToAvoidBottomInset: true,
       appBar: simpleAppBar(context, title: 'Dietitian Biodata'),
       body: SizedBox(
         height: _size.height * 0.56,
@@ -79,6 +80,7 @@ class DietitianBio extends StatelessWidget {
                           child: Text(
                             'Book Appointment',
                             style: AppTextStyles.s16w500black.copyWith(
+                                fontSize: 16.sp,
                                 color: AppColors.loginFieldValueColor),
                           ),
                         ),
@@ -98,6 +100,7 @@ class DietitianBio extends StatelessWidget {
                           child: Text(
                             'Message',
                             style: AppTextStyles.s16w500black.copyWith(
+                                fontSize: 16.sp,
                                 color: AppColors.loginFieldValueColor),
                           ),
                         ),

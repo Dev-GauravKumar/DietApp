@@ -47,6 +47,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
           child: SizedBox(
             height: _size.height * 0.2,
             child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: cardColors.length,
                 itemBuilder: ((context, index) {

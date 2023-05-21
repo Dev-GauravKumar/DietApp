@@ -359,29 +359,35 @@ class MessageTile extends StatelessWidget {
   }
 }
 
-AppBar simpleAppBar(BuildContext context, {required String title}) {
+PreferredSizeWidget simpleAppBar(BuildContext context,
+    {required String title}) {
   final size = MediaQuery.of(context).size;
-  return AppBar(
-    elevation: 0,
-    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-    leading: IconButton(
-      icon: const Icon(
-        Icons.arrow_back_ios_new_rounded,
-        color: AppColors.blackColor,
+  return PreferredSize(
+    preferredSize: Size.fromHeight(90.sp),
+    child: AppBar(
+      automaticallyImplyLeading: false,
+      toolbarHeight: 150.sp,
+      elevation: 0,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      leading: IconButton(
+        icon: const Icon(
+          Icons.arrow_back_ios_new_rounded,
+          color: AppColors.blackColor,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
-      onPressed: () {
-        Navigator.pop(context);
-      },
+      title: Text(
+        title,
+        style: AppTextStyles.s20w700black,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+      centerTitle: true,
+      bottom: PreferredSize(
+          preferredSize: Size(size.width, 5.sp), child: const Divider()),
     ),
-    title: Text(
-      title,
-      style: AppTextStyles.s20w700black,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-    ),
-    centerTitle: true,
-    bottom: PreferredSize(
-        preferredSize: Size(size.width, 5.sp), child: const Divider()),
   );
 }
 
@@ -1046,11 +1052,15 @@ class BlueProgressCard extends StatelessWidget {
                     Stack(
                       alignment: Alignment.center,
                       children: [
-                        CircularProgressIndicator(
-                          value: progressValue / 100,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(progressValueColor),
-                          backgroundColor: progressBgColor.withOpacity(0.3),
+                        SizedBox(
+                          height: 49.sp,
+                          width: 49.sp,
+                          child: CircularProgressIndicator(
+                            value: progressValue / 100,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                progressValueColor),
+                            backgroundColor: progressBgColor.withOpacity(0.3),
+                          ),
                         ),
                         Text(
                           '${progressValue.toInt()}%',
@@ -1059,7 +1069,7 @@ class BlueProgressCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    HorizontalSizedBox(width: 15.sp),
+                    HorizontalSizedBox(width: 10.sp),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

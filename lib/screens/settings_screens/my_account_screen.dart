@@ -21,7 +21,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: simpleAppBar(context, title: 'My Account'),
       body: SizedBox.expand(
         child: Padding(
@@ -81,8 +81,8 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   color: AppColors.searchBoxBgColor,
                   elevation: 5,
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(left: 10.sp, right: 10.sp, top: 5.sp),
+                    padding: EdgeInsets.only(
+                        left: 10.sp, right: 10.sp, top: 5.sp, bottom: 10.sp),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -93,6 +93,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         TextField(
                           expands: false,
                           decoration: InputDecoration(
+                            isCollapsed: true,
                             contentPadding: EdgeInsets.zero,
                             border:
                                 OutlineInputBorder(borderSide: BorderSide.none),
@@ -109,8 +110,8 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   color: AppColors.searchBoxBgColor,
                   elevation: 5,
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(left: 10.sp, right: 10.sp, top: 5.sp),
+                    padding: EdgeInsets.only(
+                        left: 10.sp, right: 10.sp, top: 5.sp, bottom: 10.sp),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -121,6 +122,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         TextField(
                           expands: false,
                           decoration: InputDecoration(
+                            isCollapsed: true,
                             contentPadding: EdgeInsets.zero,
                             border:
                                 OutlineInputBorder(borderSide: BorderSide.none),
@@ -137,8 +139,8 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   color: AppColors.searchBoxBgColor,
                   elevation: 5,
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(left: 10.sp, right: 10.sp, top: 5.sp),
+                    padding: EdgeInsets.only(
+                        left: 10.sp, right: 10.sp, top: 5.sp, bottom: 10.sp),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -149,6 +151,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         TextField(
                           expands: false,
                           decoration: InputDecoration(
+                            isCollapsed: true,
                             contentPadding: EdgeInsets.zero,
                             border:
                                 OutlineInputBorder(borderSide: BorderSide.none),
@@ -165,8 +168,8 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   color: AppColors.searchBoxBgColor,
                   elevation: 5,
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(left: 10.sp, right: 10.sp, top: 5.sp),
+                    padding: EdgeInsets.only(
+                        left: 10.sp, right: 10.sp, top: 5.sp, bottom: 10.sp),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -177,6 +180,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         TextField(
                           expands: false,
                           decoration: InputDecoration(
+                            isCollapsed: true,
                             contentPadding: EdgeInsets.zero,
                             border:
                                 OutlineInputBorder(borderSide: BorderSide.none),
@@ -191,7 +195,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      height: 80.sp,
+                      height: 60.sp,
                       width: 180.sp.sp,
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -227,6 +231,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                                   color: AppColors.darkGreyColor,
                                 ),
                                 decoration: const InputDecoration(
+                                  isCollapsed: true,
                                   contentPadding: EdgeInsets.zero,
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide.none),
@@ -238,7 +243,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 80.sp,
+                      height: 60.sp,
                       width: 180.sp.sp,
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -274,6 +279,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                                   color: AppColors.darkGreyColor,
                                 ),
                                 decoration: const InputDecoration(
+                                  isCollapsed: true,
                                   contentPadding: EdgeInsets.zero,
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide.none),
@@ -291,7 +297,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      height: 80.sp,
+                      height: 60.sp,
                       width: 180.sp.sp,
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -311,6 +317,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                               TextField(
                                 expands: false,
                                 decoration: InputDecoration(
+                                  isCollapsed: true,
                                   contentPadding: EdgeInsets.zero,
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide.none),
@@ -322,7 +329,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 80.sp,
+                      height: 60.sp,
                       width: 180.sp.sp,
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -342,6 +349,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                               TextField(
                                 expands: false,
                                 decoration: InputDecoration(
+                                  isCollapsed: true,
                                   contentPadding: EdgeInsets.zero,
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide.none),
@@ -361,8 +369,8 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   color: AppColors.searchBoxBgColor,
                   elevation: 5,
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(left: 10.sp, right: 10.sp, top: 5.sp),
+                    padding: EdgeInsets.only(
+                        left: 10.sp, right: 10.sp, top: 5.sp, bottom: 10.sp),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -373,6 +381,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         TextField(
                           expands: false,
                           decoration: InputDecoration(
+                            isCollapsed: true,
                             contentPadding: EdgeInsets.zero,
                             border:
                                 OutlineInputBorder(borderSide: BorderSide.none),

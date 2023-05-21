@@ -13,6 +13,7 @@ class HistoryView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: _size.height * 0.025),
       child: ListView.separated(
+        padding: const EdgeInsets.symmetric(vertical: 0),
         physics: const BouncingScrollPhysics(),
         itemCount: 2,
         itemBuilder: ((context, index) {

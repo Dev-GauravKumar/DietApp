@@ -189,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Don’t have an account?',
+                                  'Don’t have an account? ',
                                   style: AppTextStyles.s14w500cloginFieldValue
                                       .copyWith(
                                           fontSize: 13,

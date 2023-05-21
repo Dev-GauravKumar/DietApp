@@ -167,84 +167,95 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  AppBar commonAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: AppColors.appBarBackgroundColor,
-      leading: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-              color: AppColors.profileBackgroundColor,
-              child: Image.asset(
-                AppImages.appBarProfileImage,
-                fit: BoxFit.contain,
-              )),
-        ),
-      ),
-      leadingWidth: 60,
-      toolbarHeight: 60,
-      centerTitle: true,
-      title: Column(
-        children: [
-          const Text(
-            'Hello, Masfara!',
-            style: AppTextStyles.s17w700cblack,
-          ),
-          Text(
-            'Today Wed, Dec 28',
-            style: AppTextStyles.s16w600cloginBg
-                .copyWith(fontSize: 10, fontWeight: FontWeight.w500),
-          ),
-        ],
-      ),
-      actions: [
-        GestureDetector(
-          onTap: (() {
-            setState(() {
-              selectedIndex = 5;
-              isNotificationSelected = true;
-            });
-          }),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Stack(
-              alignment: Alignment.center,
+  PreferredSizeWidget commonAppBar(BuildContext context) {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(104.sp),
+      child: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.appBarBackgroundColor,
+        flexibleSpace: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: Card(
-                    elevation: 5.0,
-                    color: isNotificationSelected
-                        ? AppColors.loginPageBgColor
-                        : AppColors.loginFieldValueColor,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
                     child: Container(
-                      padding: const EdgeInsets.all(5),
-                      child: SvgPicture.asset(
+                        height: 50.sp,
+                        width: 50.sp,
+                        color: AppColors.profileBackgroundColor,
+                        child: Image.asset(
+                          AppImages.appBarProfileImage,
+                          fit: BoxFit.contain,
+                        )),
+                  ),
+                ),
+                Column(
+                  children: [
+                    const Text(
+                      'Hello, Masfara!',
+                      style: AppTextStyles.s17w700cblack,
+                    ),
+                    Text(
+                      'Today Wed, Dec 28',
+                      style: AppTextStyles.s16w600cloginBg
+                          .copyWith(fontSize: 10, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+                GestureDetector(
+                  onTap: (() {
+                    setState(() {
+                      selectedIndex = 5;
+                      isNotificationSelected = true;
+                    });
+                  }),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox(
+                          height: 40,
+                          width: 40,
+                          child: Card(
+                            elevation: 5.0,
+                            color: isNotificationSelected
+                                ? AppColors.loginPageBgColor
+                                : AppColors.loginFieldValueColor,
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              child: SvgPicture.asset(
+                                isNotificationSelected
+                                    ? AppImages.selectedNotificationIcon
+                                    : AppImages.appBarBellIcon,
+                              ),
+                            ),
+                          ),
+                        ),
                         isNotificationSelected
-                            ? AppImages.selectedNotificationIcon
-                            : AppImages.appBarBellIcon,
-                      ),
+                            ? const SizedBox()
+                            : Positioned(
+                                right: 2.sp,
+                                top: 5.sp,
+                                child: const Icon(
+                                  Icons.circle,
+                                  color: Colors.red,
+                                  size: 6,
+                                ),
+                              )
+                      ],
                     ),
                   ),
                 ),
-                isNotificationSelected
-                    ? const SizedBox()
-                    : Positioned(
-                        right: 2.sp,
-                        top: 5.sp,
-                        child: const Icon(
-                          Icons.circle,
-                          color: Colors.red,
-                          size: 6,
-                        ),
-                      )
               ],
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

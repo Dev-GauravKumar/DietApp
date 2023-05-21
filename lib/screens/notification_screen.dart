@@ -29,7 +29,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.separated(
-        padding: EdgeInsets.symmetric(horizontal: 30.sp),
+        physics: const BouncingScrollPhysics(),
+        padding: EdgeInsets.symmetric(horizontal: 30.sp, vertical: 20.sp),
         itemCount: titles.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(

@@ -2,6 +2,7 @@ import 'package:diet_app/constants/color_consts.dart';
 import 'package:diet_app/constants/image_consts.dart';
 import 'package:diet_app/constants/text_style_consts.dart';
 import 'package:diet_app/constants/widgets_consts.dart';
+import 'package:diet_app/route/routes.dart';
 import 'package:diet_app/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -244,7 +245,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                           const EdgeInsets.symmetric(
                                               vertical: 10.0, horizontal: 10)),
                                 ),
-                              
                               ),
                               const VerticalSizeBox(height: 15),
                               const CompulsoryHeader(
@@ -389,18 +389,24 @@ class _SignUpPageState extends State<SignUpPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Already have an account?',
+                                    'Already have an account? ',
                                     style: AppTextStyles.s14w500cloginFieldValue
                                         .copyWith(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w400),
                                   ),
-                                  Text(
-                                    'Sign In',
-                                    style: AppTextStyles.s22w700cloginTitle
-                                        .copyWith(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, RouteGenerator.loginPage);
+                                    },
+                                    child: Text(
+                                      'Sign In',
+                                      style: AppTextStyles.s22w700cloginTitle
+                                          .copyWith(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600),
+                                    ),
                                   ),
                                 ],
                               )

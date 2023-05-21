@@ -17,6 +17,7 @@ class ScheduledView extends StatelessWidget {
               date: 'Dec 20, 2022', completedSession: 1, totalSession: 4),
           Expanded(
             child: ListView.separated(
+              padding: EdgeInsets.symmetric(vertical: 15.sp),
               physics: const BouncingScrollPhysics(),
               itemCount: 2,
               itemBuilder: ((context, index) {
