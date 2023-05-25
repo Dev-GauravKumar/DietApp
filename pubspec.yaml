@@ -44,7 +44,7 @@ dependencies:
   fl_chart: ^0.62.0
   flutter_rating_bar: ^4.0.1
   percent_indicator: ^4.2.3
-  rulers: ^1.0.7
+  flutter_ruler_picker: ^1.0.3
 
 
 dev_dependencies:

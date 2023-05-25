@@ -97,6 +97,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  flutter_ruler_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_ruler_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -179,13 +186,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.1.0"
-  rulers:
-    dependency: "direct main"
-    description:
-      name: rulers
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.7"
   sky_engine:
     dependency: transitive
     description: flutter
