@@ -29,7 +29,6 @@ class _FeedbacksScreenState extends State<FeedbacksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.all(10.sp),
         child: ListView.separated(

@@ -36,7 +36,6 @@ class _PlansScreenState extends State<PlansScreen>
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [

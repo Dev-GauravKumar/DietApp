@@ -10,7 +10,6 @@ class DietProgramScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 20.sp, horizontal: 15.sp),
         child: SingleChildScrollView(
@@ -64,7 +63,7 @@ class DietProgramScreen2 extends StatelessWidget {
                 weightLeft: 9,
               ),
               VerticalSizeBox(height: 10.sp),
-               const ChartCard1(
+              const ChartCard1(
                 values: [18, 12, 14],
               ),
             ],

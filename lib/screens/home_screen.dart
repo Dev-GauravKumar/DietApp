@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:diet_app/constants/color_consts.dart';
 import 'package:diet_app/constants/image_consts.dart';
+import 'package:diet_app/providers/pageProvider.dart';
 import 'package:diet_app/route/routes.dart';
 import 'package:diet_app/widgets/common_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -66,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PageProvider>(context);
     final size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -140,24 +143,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     switch (index) {
                       case 0:
-                        Navigator.pushNamed(
-                            context, RouteGenerator.myDietProgramScreen);
+                        provider.changePageIndex(8);
+                        // Navigator.pushNamed(
+                        //     context, RouteGenerator.myDietProgramScreen);
                         break;
                       case 1:
-                        Navigator.pushNamed(
-                            context, RouteGenerator.dietIdeasScreen);
+                        provider.changePageIndex(7);
+                        // Navigator.pushNamed(
+                        //     context, RouteGenerator.dietIdeasScreen);
                         break;
                       case 2:
-                        Navigator.pushNamed(
-                            context, RouteGenerator.feedbacksScreen);
+                        provider.changePageIndex(6);
+                        // Navigator.pushNamed(
+                        //     context, RouteGenerator.feedbacksScreen);
                         break;
                       case 3:
                         Navigator.pushNamed(
                             context, RouteGenerator.healthRecordScreen);
                         break;
                       case 4:
-                        Navigator.pushNamed(
-                            context, RouteGenerator.plansScreen);
+                        provider.changePageIndex(9);
+                        // Navigator.pushNamed(
+                        //     context, RouteGenerator.plansScreen);
                         break;
                       default:
                         Navigator.pushNamed(context, RouteGenerator.homePage);
