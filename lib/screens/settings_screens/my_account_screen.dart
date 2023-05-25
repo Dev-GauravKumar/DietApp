@@ -103,6 +103,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     ),
                   ),
                 ),
+                
                 VerticalSizeBox(height: 10.sp),
                 Card(
                   shape: RoundedRectangleBorder(
@@ -196,7 +197,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   children: [
                     SizedBox(
                       height: 60.sp,
-                      width: 180.sp.sp,
+                      width: 180.sp,
                       child: Card(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),

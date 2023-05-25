@@ -12,6 +12,16 @@ class BloodComponentTracker extends StatefulWidget {
 }
 
 class _BloodComponentTrackerState extends State<BloodComponentTracker> {
+  String? currentType;
+
+  List<String> types = [
+    'Blood Component Type 1',
+    'Blood Component Type 2',
+    'Blood Component Type 3'
+  ];
+  List<double> values1 = [80000, 80000, 70000, 78000, 75000];
+  List<double> values2 = [80000, 50000, 60000, 38000, 75000];
+  bool isNextTapped = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +39,28 @@ class _BloodComponentTrackerState extends State<BloodComponentTracker> {
                   Text('Blood Glucose Level'),
                   Row(
                     children: [
-                      Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        size: 15,
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isNextTapped = !isNextTapped;
+                          });
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          size: 15,
+                        ),
                       ),
                       HorizontalSizedBox(width: 10.sp),
-                      Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 15,
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isNextTapped = !isNextTapped;
+                          });
+                        },
+                        child: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 15,
+                        ),
                       ),
                     ],
                   ),
@@ -44,7 +68,7 @@ class _BloodComponentTrackerState extends State<BloodComponentTracker> {
               ),
               VerticalSizeBox(height: 10.sp),
               BloodGlucoseCard(
-                values: [80000, 80000, 70000, 78000, 75000],
+                values: isNextTapped ? values2 : values1,
               ),
               VerticalSizeBox(height: 20.sp),
               Align(
@@ -55,7 +79,13 @@ class _BloodComponentTrackerState extends State<BloodComponentTracker> {
                     buttonTitle: 'Add New Record',
                     elevation: 5.0,
                     buttonColor: AppColors.loginPageTitleColor,
-                    onTap: () {}),
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: ((context) {
+                            return addNewRecordPopup();
+                          }));
+                    }),
               ),
               VerticalSizeBox(height: 20.sp),
               const Text(
@@ -106,6 +136,109 @@ class _BloodComponentTrackerState extends State<BloodComponentTracker> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget addNewRecordPopup() {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: SizedBox(
+        height: 250.sp,
+        width: 120.sp,
+        child: StatefulBuilder(builder:
+            (BuildContext context, void Function(void Function()) setState) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                'New Blood Component Record',
+                style: AppTextStyles.s18w500white
+                    .copyWith(color: AppColors.blackColor),
+              ),
+              // VerticalSizeBox(height: 20.sp),
+              SizedBox(
+                height: 50.sp,
+                width: 250.sp,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  color: AppColors.searchBoxBgColor,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.only(left: 10.sp, right: 10.sp, top: 5.sp),
+                    child: DropdownButtonFormField<String>(
+                      value: currentType,
+                      items: types
+                          .map((item) => DropdownMenuItem<String>(
+                              value: item, child: Text(item)))
+                          .toList(),
+                      onChanged: (value) => setState(
+                        () {
+                          value != null ? currentType = value : null;
+                        },
+                      ),
+                      iconSize: 30,
+                      icon: const Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: AppColors.loginPageBgColor,
+                      ),
+                      decoration: const InputDecoration(
+                        isCollapsed: true,
+                        contentPadding: EdgeInsets.zero,
+                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 50.sp,
+                width: 250.sp,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  color: AppColors.searchBoxBgColor,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: 10.sp, right: 10.sp, top: 5.sp, bottom: 10.sp),
+                    child: TextField(
+                      expands: false,
+                      decoration: InputDecoration(
+                        isCollapsed: true,
+                        contentPadding: EdgeInsets.zero,
+                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                        suffix: Text(
+                          'mg/dl',
+                          style: AppTextStyles.s13w500black
+                              .copyWith(color: AppColors.loginPageBgColor),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomButton(
+                      height: 40.sp,
+                      width: 130.sp,
+                      buttonTitle: 'Submit',
+                      buttonColor: AppColors.loginPageBgColor,
+                      onTap: () {}),
+                  CustomButton(
+                      height: 40.sp,
+                      width: 130.sp,
+                      buttonTitle: 'Cancel',
+                      buttonColor: AppColors.darkRedColor,
+                      onTap: () {}),
+                ],
+              ),
+            ],
+          );
+        }),
       ),
     );
   }

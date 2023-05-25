@@ -274,9 +274,14 @@ class _AddFeedbackScreenState extends State<AddFeedbackScreen> {
                 alignment: Alignment.topRight,
                 child: Padding(
                   padding: EdgeInsets.all(8.sp),
-                  child: Icon(
-                    Icons.close,
-                    size: 15,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.close,
+                      size: 15,
+                    ),
                   ),
                 )),
             SvgPicture.asset(AppImages.celebrationImage),
