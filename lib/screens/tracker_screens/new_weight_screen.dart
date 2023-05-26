@@ -14,6 +14,7 @@ class NewWeightScreen extends StatefulWidget {
 
 class _NewWeightScreenState extends State<NewWeightScreen> {
   late final RulerPickerController _rulerPickerController;
+  DateTime selectedDate = DateTime.now();
   @override
   void initState() {
     super.initState();
@@ -39,11 +40,22 @@ class _NewWeightScreenState extends State<NewWeightScreen> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   color: AppColors.searchBoxBgColor,
-                  child: CalendarDatePicker(
-                    firstDate: DateTime.now(),
-                    initialDate: DateTime.now(),
-                    lastDate: DateTime.now(),
-                    onDateChanged: (DateTime value) {},
+                  child: Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.light(
+                        primary: Colors.transparent, // header background color
+                      ),
+                    ),
+                    child: CalendarDatePicker(
+                      firstDate: DateTime.now(),
+                      initialDate: selectedDate,
+                      lastDate: DateTime.now().add(Duration(days: 1000)),
+                      onDateChanged: (DateTime value) {
+                        setState(() {
+                          selectedDate = value;
+                        });
+                      },
+                    ),
                   ),
                 ),
               ),
