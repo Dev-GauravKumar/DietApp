@@ -40,22 +40,15 @@ class _NewWeightScreenState extends State<NewWeightScreen> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   color: AppColors.searchBoxBgColor,
-                  child: Theme(
-                    data: Theme.of(context).copyWith(
-                      colorScheme: ColorScheme.light(
-                        primary: Colors.transparent, // header background color
-                      ),
-                    ),
-                    child: CalendarDatePicker(
-                      firstDate: DateTime.now(),
-                      initialDate: selectedDate,
-                      lastDate: DateTime.now().add(Duration(days: 1000)),
-                      onDateChanged: (DateTime value) {
-                        setState(() {
-                          selectedDate = value;
-                        });
-                      },
-                    ),
+                  child: CalendarDatePicker(
+                    firstDate: DateTime.now(),
+                    initialDate: selectedDate,
+                    lastDate: DateTime.now().add(Duration(days: 1000)),
+                    onDateChanged: (DateTime value) {
+                      setState(() {
+                        selectedDate = value;
+                      });
+                    },
                   ),
                 ),
               ),
